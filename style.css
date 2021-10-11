@@ -1,0 +1,112 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	--t: .5s;
+}
+
+body {
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #161616;
+}
+
+
+button {
+	position: relative;
+	width: 150px;
+	height: 50px;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+}
+button::before {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 0;
+	height: 2px;
+	background: #f8f8f8;
+	transition: var(--t);
+	transition-delay: calc(var(--t) * 2);
+}
+button::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 2px;
+	height: 0;
+	background: #f8f8f8;
+	transition: var(--t);
+	transition-delay: var(--t);
+}
+p {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #f8f8f8;
+	font-size: 18px;
+	font-weight: 500;
+}
+p::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 0;
+	height: 2px;
+	background: #f8f8f8;
+	transition: var(--t);
+	transition-delay: calc(var(--t) * 2);
+}
+p::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 2px;
+	height: 0;
+	background: #f8f8f8;
+	transition: var(--t);
+	transition-delay: var(--t);
+}
+span {
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	width: 0;
+	height: calc(100% - 4px);
+	z-index: 100;
+	mix-blend-mode: difference;
+	transition: var(--t);
+	background: #f8f8f8;
+}
+
+
+
+button:hover::before,
+button:hover p::before {
+	width: 100%;
+	transition-delay: 0s;
+}
+button:hover::after,
+button:hover p::after {
+	height: 100%;
+	transition-delay: var(--t);
+}
+button:hover span {
+	width: calc(100% - 4px);
+	transition-delay: calc(var(--t) * 2);
+}
